@@ -352,7 +352,7 @@ void Menu_DeleteUser()																				/// Function body to remove the user f
     {
       continue;
     }
-    /////////////////////////////////////////////////// 4th session : 29 / 7 / 2020 ///////////////////////////////////////////////
+
     system("CLS");
     
     cout << "Are you sure you want to delete user with these properties?" << endl;
@@ -517,7 +517,7 @@ int Check_LegitPassword(string pswrd)
   {
     char temp_specSign = myPswrd[i];
     
-    if(temp_specSign == '!' || temp_specSign == '@' || temp_specSign == '+' || temp_specSign == '-' || temp_specSign == '§' ||                temp_specSign == '!' || temp_specSign == '$' || temp_specSign == '%' || temp_specSign == '/' || temp_specSign == '(' ||                temp_specSign   == ')' || temp_specSign == '=' || temp_specSign == '?' || temp_specSign == '{' || temp_specSign == '}' ||              temp_specSign == '[' ||       temp_specSign == ']' || temp_specSign == 'ß' || temp_specSign == '*' || temp_specSign == '&' ||          temp_specSign == '^' || temp_specSign     == '\\')
+    if(temp_specSign == '!' || temp_specSign == '@' || temp_specSign == '+' || temp_specSign == '-' || temp_specSign == 'Â§' ||                temp_specSign == '!' || temp_specSign == '$' || temp_specSign == '%' || temp_specSign == '/' || temp_specSign == '(' ||                temp_specSign   == ')' || temp_specSign == '=' || temp_specSign == '?' || temp_specSign == '{' || temp_specSign == '}' ||              temp_specSign == '[' ||       temp_specSign == ']' || temp_specSign == 'ÃŸ' || temp_specSign == '*' || temp_specSign == '&' ||          temp_specSign == '^' || temp_specSign     == '\\')
     {
       found_SpecialSign = true;
     }
