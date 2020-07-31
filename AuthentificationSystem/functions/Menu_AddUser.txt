@@ -1,0 +1,64 @@
+void Menu_AddUser()																					/// Function body for adding a new user to our list.
+{	
+	while(true)
+	{
+		string input;																					/// Local variable for inputting user's response when necessary.
+		
+	beginning:																							/// Label tag for recursing the whole function.
+		
+		system("CLS");																					/// Clear console's screen.
+		cout << "-------------------- ADD NEW USER --------------------\n\n" << "Enter a new Username:\t";
+																										/// Asking the user to enter a new username.
+		cin >> input;																					/// Input the user's response to our string variable.
+		string temp_Username = input;																	/// Assign our input to our temporary username variable.
+		
+		if(temp_Username  == "XXX") break;
+		
+		bool isIdentical = (FindUserByID(temp_Username) >= 0);											/// A condition to check whether a previously created user with that username exists or not.
+		if(isIdentical)																					// If found...
+		{
+			cout << "\n\nERROR:  A username with that name already exists!\nPlease choose a different one.\n\n\n";
+																										/// Tell the user to change the input username.
+			system("PAUSE");																			/// Wait for ENTER key...
+			goto beginning;																				/// Jump to the beginning of this function. (the beginning: label.)
+		}
+		
+		cout << "Please enter your new password:\t";													/// Else if everything went fine, let's ask a new password from our user.
+		cin >> input;																					/// Input that password.
+		string temp_Password = input;																	/// Assign our input to our temporary password variable.
+		
+		if(temp_Password  == "XXX") break;
+		
+																										/// Check if there is a space availabe for a new user or not.
+		int i;																							/// Remember the first free index in our array.
+		bool foundSpace = false;																		/// A flag to set to true when we have found a free space in our array.
+		for(i = 0; i < MAX_USERS; i++)																	/// Traverse through our array of users.
+		{
+			if(Users[i] == NULL) 																		/// Check if this index is free...
+			{
+				foundSpace = true;																		/// If it was, set the flag to true.
+				break;																					/// There is no need to find another space, so break the loop.
+			}
+		}
+		
+		system("CLS");																					/// Clear console's screen.
+		
+		if(foundSpace)																					/// If we have found a new space...
+		{
+			Users[i] = new client();																	/// Then allocate free memomry for the index we have found.
+			
+			Users[i]->ID = i + 1;																		/// Set the one-based ID.
+			Users[i]->setUsername(temp_Username);														/// Set the username.
+			Users[i]->setPassword(temp_Password);														/// Set the password.
+			
+			cout << "Successfully created a new user with ID: " << Users[i]->ID << " ! Welcome back, " << Users[i]->getUsername() << "\n\n\n";
+																										/// Return new user data using the object we have created for verification.
+			system("PAUSE");																			/// Wait for ENTER key...
+		}
+		else																							/// Otherwise, if no free space was found...
+		{
+			cout << "ERROR! No more spaces left!\nTry deleting a user and try again.\n\n\n" ;			/// Then print the error to the screen...
+			system("PAUSE");																			/// And wait for ENTER key...
+		}
+	}
+}
